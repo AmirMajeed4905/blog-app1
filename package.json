@@ -7,10 +7,18 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmirMajeed4905/blog-app1.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/AmirMajeed4905/blog-app1/issues"
+  },
+  "homepage": "https://github.com/AmirMajeed4905/blog-app1#readme",
   "dependencies": {
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
