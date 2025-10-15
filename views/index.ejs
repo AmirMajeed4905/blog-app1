@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Landing Page</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/yourfontawesomeid.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-left">
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#blogs">Blogs</a>
+      </div>
+      <div class="nav-center logo">MyBlog</div>
+      <div class="nav-right">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="hamburger">&#9776;</div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+ <!-- Hero Section with Parallax -->
+<section id="home" class="hero reveal">
+  <div class="hero-content">
+    <h1>Discover Amazing Stories</h1>
+    <p>Your daily dose of inspiration, news, and learning</p>
+    <a href="#blogs" class="btn">Explore Blogs</a>
+  </div>
+</section>
+
+
+  <!-- Features Section -->
+  <section id="features" class="features reveal">
+    <h2>Our Features</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>Engaging Content</h3>
+        <p>Curated stories to keep you informed and inspired.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Responsive Design</h3>
+        <p>Enjoy seamless reading on any device you use.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Active Community</h3>
+        <p>Connect with people sharing the same interests.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section with Pagination -->
+  <section id="blogs" class="blogs reveal">
+    <h2>Latest Blogs</h2>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <img src="https://picsum.photos/400/250?1" alt="blog1">
+        <h3>Blog Post One</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+      </div>
+      <div class="blog-card">
+        <img src="https://picsum.photos/400/250?2" alt="blog2">
+        <h3>Blog Post Two</h3>
+        <p>Doloribus corporis blanditiis at aliquid molestiae incidunt.</p>
+      </div>
+      <div class="blog-card">
+        <img src="https://picsum.photos/400/250?3" alt="blog3">
+        <h3>Blog Post Three</h3>
+        <p>Labore veniam necessitatibus, molestias officiis possimus!</p>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <a href="#" class="prev">« Prev</a>
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#" class="next">Next »</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="reveal">
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#blogs">Blogs</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p>© 2025 MyBlog. Built with ❤️</p>
+  </footer>
+
+  <!-- Script for menu + animations -->
+  <script>
+    // Hamburger toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLeft = document.querySelector('.nav-left');
+    hamburger.addEventListener('click', () => {
+      navLeft.classList.toggle('show');
+    });
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href'))
+          .scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Reveal on scroll
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 100;
+        if (elementTop < windowHeight - elementVisible) {
+          el.classList.add("active");
+        }
+      });
+    }
+    window.addEventListener("scroll", revealOnScroll);
+  </script>
+</body>
+</html>

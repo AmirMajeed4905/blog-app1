@@ -32,7 +32,7 @@ app.set("views", path.join(path.resolve(), "views"));
 // app.use("/posts", postRoutes);
 
 app.get("/", (req, res) => {
-  res.send("this is blog project home page");
+  res.render("index");
 });
 // Error page
 app.use((err, req, res, next) => {
@@ -41,5 +41,5 @@ app.use((err, req, res, next) => {
 });
 
 // Server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));
