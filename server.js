@@ -25,16 +25,21 @@ app.use("/uploads", express.static("uploads"));
 
 // View engine
 app.set("view engine", "ejs");
-app.use(express.static(path.join(path.resolve(), "public")));
 app.set("views", path.join(path.resolve(), "views"));
-// Routes
+app.use(express.static(path.join(path.resolve(), "public")));
 
+// Routes
 // app.use("/posts", postRoutes);
 
 app.get("/", (req, res) => {
   res.render("index");
 });
-// Error page
+
+app.get("/add-post", (req, res) => {
+  res.render("add-post");
+});
+
+// Error handling middleware (must be AFTER all routes)
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).render("500", { message: "Something broke!" });
@@ -42,4 +47,6 @@ app.use((err, req, res, next) => {
 
 // Server
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => console.log(`Server running on ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
