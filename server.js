@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import session from "express-session";
 import dotenv from "dotenv";
 import path from "path";
+import Post from "./models/postSchema.js";
 
 // import postRoutes from "./routes/postRoutes.js";
 import connectDB from "./config/db.js";
@@ -38,6 +39,47 @@ app.get("/", (req, res) => {
 app.get("/add-post", (req, res) => {
   res.render("add-post");
 });
+app.post("/add-post", async (req, res) => {
+  const { title, content, author } = req.body;
+
+  // Basic validation
+  if (!title || !content || !author) {
+    return res.status(400).send("All fields are required");
+  }
+
+  try {
+    const newPost = new Post({ title, content, author });
+    await newPost.save();
+
+    // Redirect to posts page after creation
+    res.redirect("/post"); 
+  } catch (error) {
+    console.error(error);
+    // Render error page instead of JSON for consistency
+    res.status(500).render("500", { message: "Error creating post" });
+  }
+});
+
+
+
+
+app.get("/post", async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = 5;
+
+    const posts = await Post.find()
+      .sort({ createdAt: -1 })
+      .skip((page - 1) * limit)
+      .limit(limit);
+
+    res.render("post", { posts, page });
+  } catch (error) {
+    console.error(error);
+    res.status(500).render("500", { message: "Error fetching posts" });
+  }
+});
+
 
 // Error handling middleware (must be AFTER all routes)
 app.use((err, req, res, next) => {

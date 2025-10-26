@@ -243,3 +243,67 @@ html { scroll-behavior: smooth; }
   from {opacity: 0; transform: translateY(40px);}
   to {opacity: 1; transform: translateY(0);}
 }
+
+
+
+
+/* Add Post Form */
+.add-post-form {
+  max-width: 700px;           /* limits width on large screens */
+  margin: 2rem auto;           /* center form vertically and horizontally */
+  padding: 2rem;               /* inner spacing */
+  background: #fff;            /* form background */
+  border-radius: 8px;          /* rounded corners */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* subtle shadow */
+  font-family: 'Poppins', sans-serif;
+}
+
+.add-post-form h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.add-post-form label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  font-weight: 500;
+}
+
+.add-post-form input,
+.add-post-form textarea {
+  width: 100%;                /* full width */
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  resize: vertical;           /* allow vertical resizing of textarea */
+}
+
+.add-post-form button {
+  width: 100%;                /* full width button */
+  padding: 0.8rem;
+  margin-top: 1.5rem;
+  background: #ff6347;        /* orange button */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.add-post-form button:hover {
+  background: #e5533c;        /* hover effect */
+}
+
+/* Mobile / Responsive */
+@media (max-width: 768px) {
+  .add-post-form {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  .add-post-form h2 {
+    font-size: 1.5rem;
+  }
+}

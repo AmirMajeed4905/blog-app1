@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Page</title>
+</head>
+<body>
+    <h1>Posts</h1>
+
+    <% if (posts.length > 0) { %>
+        <% posts.forEach(function(post) { %>
+            <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+                <h2><%= post.title %></h2>  
+                <p>By <%= post.author %></p>
+                <div><%= post.content %></div>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>No posts found.</p>
+    <% } %>
+
+    <a href="/">Back to Home</a>
+</body>
+</html>
